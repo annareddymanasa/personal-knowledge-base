@@ -14,3 +14,4 @@ backend/uploads/
 dist/
 coverage/
 *.log
+tatus
