@@ -1,0 +1,69 @@
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--site-card);
+  border: 1px solid var(--site-border);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px color-mix(in srgb, var(--site-text) 4%, transparent);
+}
+
+.theme-switcher-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 35px;
+  padding: 0;
+  color: var(--site-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.theme-switcher-button:hover {
+  color: var(--site-primary);
+  background: var(--site-soft);
+  transform: translateY(-1px);
+}
+
+.theme-switcher-button.active {
+  color: var(--site-primary);
+  background: var(--site-soft);
+  border-color: var(--site-border);
+}
+
+.theme-switcher-button:focus-visible {
+  outline: 2px solid var(--site-primary);
+  outline-offset: 2px;
+}
+
+.theme-switcher-compact {
+  gap: 2px;
+  padding: 3px;
+  border-radius: 11px;
+}
+
+.theme-switcher-compact .theme-switcher-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+@media (max-width: 380px) {
+  .theme-switcher-compact {
+    gap: 1px;
+  }
+
+  .theme-switcher-compact .theme-switcher-button {
+    width: 29px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,244 @@
+.pkb-attachments {
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid #e9ebf3;
+  border-radius: 12px;
+  background: #fcfcff;
+}
+
+.pkb-attachments-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pkb-attachments-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: #6759e8;
+}
+
+.pkb-attachments-title h3 {
+  margin: 0;
+  color: #292b42;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pkb-attachments-title p {
+  margin: 4px 0 0;
+  color: #9297a9;
+  font-size: 10px;
+}
+
+.pkb-attachment-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 35px;
+  padding: 0 11px;
+  border: 1px solid #ded9ff;
+  border-radius: 8px;
+  color: #6252d9;
+  background: #f5f2ff;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.pkb-attachment-upload:hover {
+  background: #ece8ff;
+}
+
+.pkb-attachment-upload.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.pkb-attachment-upload input {
+  display: none;
+}
+
+.pkb-attachment-hint {
+  margin: 11px 0 14px;
+  color: #9297a9;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.pkb-attachment-list {
+  display: grid;
+  gap: 9px;
+}
+
+.pkb-attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #ececf4;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.pkb-attachment-file-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  color: #6b5cde;
+  background: #f0edff;
+}
+
+.pkb-attachment-file-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.pkb-attachment-file-info strong {
+  overflow: hidden;
+  color: #34364a;
+  font-size: 11px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pkb-attachment-file-info span {
+  color: #9297a9;
+  font-size: 10px;
+}
+
+.pkb-attachment-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pkb-attachment-actions button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  color: #858ba0;
+  background: transparent;
+}
+
+.pkb-attachment-actions button:hover {
+  color: #6759e8;
+  background: #f0edff;
+}
+
+.pkb-attachment-actions button:last-child:hover {
+  color: #d95065;
+  background: #fff0f2;
+}
+
+.pkb-attachment-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pkb-attachment-empty,
+.pkb-attachment-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 12px;
+  border: 1px dashed #e2e1ef;
+  border-radius: 9px;
+  color: #9297a9;
+  font-size: 11px;
+}
+
+.pkb-attachment-empty {
+  flex-direction: column;
+}
+
+.pkb-attachment-empty > svg {
+  margin-bottom: 2px;
+  color: #8a7ce7;
+}
+
+.pkb-attachment-empty small {
+  font-size: 10px;
+}
+
+.pkb-attachment-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ffd9dd;
+  border-radius: 8px;
+  color: #c33d53;
+  background: #fff6f7;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.pkb-attachment-error span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.pkb-attachment-error button {
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-size: 19px;
+}
+
+.pkb-attachment-spinner {
+  animation: pkb-attachment-spin 1s linear infinite;
+}
+
+@keyframes pkb-attachment-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .pkb-attachments {
+    padding: 12px;
+  }
+
+  .pkb-attachments-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pkb-attachment-upload {
+    width: 100%;
+  }
+
+  .pkb-attachment-item {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .pkb-attachment-actions {
+    gap: 0;
+  }
+
+  .pkb-attachment-actions button {
+    width: 28px;
+  }
+}

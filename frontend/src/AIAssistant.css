@@ -1,0 +1,471 @@
+.ai-assistant {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+  color: #27252b;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ai-assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 19px 5%;
+  background: #ffffff;
+  border-bottom: 1px solid #eae7e4;
+}
+
+.ai-assistant-back,
+.ai-assistant-new-chat,
+.ai-assistant-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ai-assistant-back {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #f3f0ed;
+  color: #45404b;
+}
+
+.ai-assistant-back:hover {
+  background: #e9e3f2;
+}
+
+.ai-assistant-brand-icon,
+.ai-assistant-welcome-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8c6bc1, #6950a1);
+  box-shadow: 0 5px 15px rgba(105, 80, 161, 0.16);
+}
+
+.ai-assistant-brand-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+}
+
+.ai-assistant-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-assistant-heading h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+}
+
+.ai-assistant-heading p {
+  margin: 4px 0 0;
+  color: #827c87;
+  font-size: 12px;
+}
+
+.ai-assistant-new-chat {
+  gap: 8px;
+  padding: 11px 15px;
+  border: 1px solid #e7e0ed;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #624b8b;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.ai-assistant-new-chat:hover:not(:disabled) {
+  background: #f4effa;
+}
+
+.ai-assistant-new-chat:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.ai-assistant-conversation {
+  flex: 1;
+  width: min(860px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 42px 0 24px;
+}
+
+.ai-assistant-welcome {
+  max-width: 560px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.ai-assistant-welcome-icon {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 19px;
+  border-radius: 18px;
+}
+
+.ai-assistant-welcome h2 {
+  margin: 0;
+  color: #30283a;
+  font-size: clamp(23px, 3vw, 32px);
+  font-weight: 750;
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+.ai-assistant-welcome p {
+  max-width: 470px;
+  margin: 13px auto 0;
+  color: #7a7380;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.ai-assistant-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  padding-bottom: 20px;
+}
+
+.ai-assistant-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  width: 100%;
+}
+
+.ai-assistant-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 37px;
+  flex-shrink: 0;
+  border: 1px solid #e8e0ef;
+  border-radius: 12px;
+  background: #eee7f7;
+  color: #71569f;
+}
+
+.ai-assistant-message-user .ai-assistant-avatar {
+  border-color: #dedbd6;
+  background: #efede9;
+  color: #615c55;
+}
+
+.ai-assistant-message-content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.ai-assistant-sender {
+  display: block;
+  margin-bottom: 7px;
+  color: #3d3548;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.ai-assistant-message-content p {
+  margin: 0;
+  color: #4c4751;
+  font-size: 14px;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ai-assistant-thinking {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #80768c !important;
+}
+
+.ai-assistant-spinner {
+  animation: ai-assistant-spin 1s linear infinite;
+}
+
+@keyframes ai-assistant-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-assistant-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  padding: 12px 20px 18px;
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 249, 247, 0.9),
+    #faf9f7 22%
+  );
+}
+
+.ai-assistant-composer {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 14px 15px 11px;
+  border: 1px solid #e1d9e8;
+  border-radius: 19px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(58, 42, 73, 0.07);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ai-assistant-composer:focus-within {
+  border-color: #a58bc9;
+  box-shadow: 0 8px 30px rgba(105, 80, 161, 0.12);
+}
+
+.ai-assistant-composer textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  max-height: 180px;
+  padding: 8px 3px;
+  resize: vertical;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #302b35;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.ai-assistant-composer textarea::placeholder {
+  color: #a19aa7;
+}
+
+.ai-assistant-composer textarea:disabled {
+  cursor: wait;
+}
+
+.ai-assistant-composer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #f0edf1;
+}
+
+.ai-assistant-hint {
+  color: #98919d;
+  font-size: 11px;
+}
+
+.ai-assistant-send-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-assistant-character-count {
+  color: #a19aa7;
+  font-size: 11px;
+}
+
+.ai-assistant-send {
+  width: 37px;
+  height: 37px;
+  border-radius: 12px;
+  background: #7556a6;
+  color: #ffffff;
+}
+
+.ai-assistant-send:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #62458f;
+}
+
+.ai-assistant-send:disabled {
+  cursor: not-allowed;
+  background: #d9d1e1;
+}
+
+.ai-assistant-error {
+  width: min(820px, 100%);
+  margin: 0 auto 10px;
+  padding: 12px 15px;
+  border: 1px solid #f0c9c9;
+  border-radius: 12px;
+  background: #fff2f2;
+  color: #a33232;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.ai-assistant-disclaimer {
+  margin: 11px 0 0;
+  color: #a19aa5;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .ai-assistant-header {
+    gap: 10px;
+    padding: 13px 14px;
+  }
+
+  .ai-assistant-back {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ai-assistant-brand-icon {
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+  }
+
+  .ai-assistant-heading h1 {
+    font-size: 14px;
+  }
+
+  .ai-assistant-heading p {
+    font-size: 10px;
+  }
+
+  .ai-assistant-new-chat {
+    gap: 0;
+    padding: 10px;
+  }
+
+  .ai-assistant-new-chat span {
+    display: none;
+  }
+
+  .ai-assistant-conversation {
+    width: calc(100% - 30px);
+    padding-top: 30px;
+  }
+
+  .ai-assistant-welcome {
+    margin-bottom: 29px;
+  }
+
+  .ai-assistant-welcome p {
+    font-size: 13px;
+  }
+
+  .ai-assistant-footer {
+    padding: 10px 12px 14px;
+  }
+
+  .ai-assistant-composer {
+    padding: 11px;
+    border-radius: 16px;
+  }
+
+  .ai-assistant-hint {
+    max-width: 190px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .ai-assistant-message {
+    gap: 10px;
+  }
+
+  .ai-assistant-avatar {
+    width: 33px;
+    height: 33px;
+    border-radius: 10px;
+  }
+}
+.ai-assistant-markdown {
+  color: #4c4751;
+  font-size: 14px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.ai-assistant-markdown p {
+  margin: 0 0 12px;
+}
+
+.ai-assistant-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.ai-assistant-markdown strong {
+  color: #30283a;
+  font-weight: 750;
+}
+
+.ai-assistant-markdown ul,
+.ai-assistant-markdown ol {
+  margin: 8px 0 14px;
+  padding-left: 24px;
+}
+
+.ai-assistant-markdown li {
+  margin-bottom: 6px;
+  padding-left: 3px;
+}
+
+.ai-assistant-markdown h1,
+.ai-assistant-markdown h2,
+.ai-assistant-markdown h3 {
+  margin: 16px 0 8px;
+  color: #30283a;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.ai-assistant-markdown h1 {
+  font-size: 21px;
+}
+
+.ai-assistant-markdown h2 {
+  font-size: 18px;
+}
+
+.ai-assistant-markdown h3 {
+  font-size: 16px;
+}
+
+.ai-assistant-markdown code {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #f0edf3;
+  font-family: Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.ai-assistant-markdown pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f0edf3;
+}
+
+.ai-assistant-markdown pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.ai-assistant-markdown blockquote {
+  margin: 12px 0;
+  padding: 3px 0 3px 13px;
+  border-left: 3px solid #b8a5d2;
+  color: #77707e;
+}

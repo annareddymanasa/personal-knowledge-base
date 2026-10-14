@@ -1,0 +1,1020 @@
+html {
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+input,
+textarea,
+select {
+  min-width: 0;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-color: var(--site-primary, #a95f43);
+  outline-offset: 3px;
+}
+
+.landing-page,
+.legal-page,
+.auth-page,
+.pkb-app {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.landing-page *,
+.legal-page *,
+.auth-page *,
+.pkb-app * {
+  min-width: 0;
+}
+
+.landing-page p,
+.landing-page h1,
+.landing-page h2,
+.landing-page h3,
+.legal-page p,
+.legal-page h1,
+.legal-page h2,
+.auth-page p,
+.auth-page h1,
+.auth-page h2 {
+  overflow-wrap: anywhere;
+}
+
+.landing-page a,
+.legal-page a,
+.auth-page a,
+.pkb-app a {
+  touch-action: manipulation;
+}
+
+.landing-header,
+.landing-header-actions,
+.landing-nav,
+.landing-hero,
+.landing-hero-content,
+.landing-hero-visual,
+.landing-principles,
+.landing-feature-grid,
+.landing-workflow-inner,
+.landing-footer-main,
+.landing-footer-bottom {
+  min-width: 0;
+}
+
+.landing-primary-button,
+.landing-secondary-button,
+.landing-header-cta,
+.landing-cta-button,
+.auth-submit {
+  touch-action: manipulation;
+}
+
+.landing-primary-button,
+.landing-header-cta,
+.landing-cta-button {
+  text-align: center;
+}
+
+.legal-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.legal-section {
+  scroll-margin-top: 24px;
+}
+
+.auth-form-panel,
+.auth-form-container,
+.auth-form,
+.auth-label,
+.auth-password-field {
+  min-width: 0;
+}
+
+.auth-form-container {
+  width: 100%;
+}
+
+.auth-label input,
+.auth-password-field input {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.theme-switcher {
+  flex-shrink: 0;
+}
+
+.pkb-app {
+  overflow-x: clip;
+}
+
+.pkb-main,
+.pkb-page-content,
+.pkb-topbar,
+.pkb-topbar-left,
+.pkb-topbar-actions {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pkb-page-content {
+  width: 100%;
+}
+
+.pkb-search {
+  min-width: 0;
+}
+
+.pkb-search input {
+  min-width: 0;
+  width: 100%;
+}
+
+.pkb-note-card,
+.pkb-bookmark-card,
+.pkb-tag-card,
+.pkb-folder-card,
+.pkb-stat-card,
+.pkb-settings-card,
+.pkb-activity-item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pkb-note-card *,
+.pkb-bookmark-card *,
+.pkb-tag-card *,
+.pkb-folder-card *,
+.pkb-stat-card *,
+.pkb-settings-card *,
+.pkb-activity-item * {
+  overflow-wrap: anywhere;
+}
+
+.pkb-form-input,
+.pkb-textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pkb-modal-backdrop {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pkb-modal {
+  width: 100%;
+  max-width: min(620px, 100%);
+  min-width: 0;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pkb-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pkb-modal-actions > button {
+  max-width: 100%;
+}
+
+.pkb-toast {
+  max-width: calc(100vw - 32px);
+}
+
+.pkb-toast span {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 1440px) {
+  .landing-header,
+  .landing-hero {
+    max-width: 1600px;
+  }
+
+  .landing-hero {
+    padding-right: 7%;
+    padding-left: 7%;
+  }
+
+  .landing-preview {
+    max-width: 455px;
+  }
+
+  .legal-content {
+    max-width: 1200px;
+  }
+
+  .auth-form-container {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .landing-header {
+    gap: 18px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .landing-nav {
+    gap: 20px;
+  }
+
+  .landing-header-actions {
+    gap: 12px;
+  }
+
+  .landing-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 25px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .landing-hero h1 {
+    font-size: clamp(40px, 4.8vw, 56px);
+    letter-spacing: -2px;
+  }
+
+  .landing-hero-description {
+    font-size: 13px;
+  }
+
+  .landing-floating-card {
+    max-width: 205px;
+  }
+
+  .landing-floating-top {
+    right: -4px;
+  }
+
+  .landing-floating-bottom {
+    left: -4px;
+  }
+
+  .landing-footer-main {
+    gap: 28px;
+  }
+
+  .auth-brand-panel {
+    padding-right: 34px;
+    padding-left: 34px;
+  }
+
+  .auth-form-panel {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+}
+
+@media (max-width: 850px) {
+  .landing-header {
+    min-height: 74px;
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .landing-nav {
+    display: none;
+  }
+
+  .landing-header-actions {
+    margin-left: auto;
+  }
+
+  .landing-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding-top: 54px;
+    padding-bottom: 65px;
+  }
+
+  .landing-hero-content {
+    max-width: 680px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .landing-hero-description {
+    max-width: 570px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .landing-hero-actions {
+    justify-content: center;
+  }
+
+  .landing-hero-trust {
+    justify-content: center;
+  }
+
+  .landing-hero-visual {
+    width: min(100%, 590px);
+    margin: 0 auto;
+  }
+
+  .landing-principles {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 30px 7%;
+  }
+
+  .landing-principle {
+    width: 100%;
+    max-width: 480px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .landing-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .landing-workflow-inner {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .landing-workflow-heading {
+    max-width: 650px;
+  }
+
+  .landing-workflow-heading > p {
+    margin-left: 0;
+  }
+
+  .landing-footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 24px;
+  }
+
+  .landing-footer-about {
+    grid-column: 1 / -1;
+  }
+
+  .landing-footer-note {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .legal-header {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .legal-content {
+    max-width: 100%;
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+
+  .legal-footer {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .auth-page {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .auth-brand-panel {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+
+  .auth-hero {
+    width: 100%;
+  }
+
+  .auth-hero h1 {
+    font-size: clamp(34px, 4vw, 43px);
+    letter-spacing: -1.6px;
+  }
+
+  .auth-decoration {
+    gap: 10px;
+  }
+
+  .auth-decoration-card {
+    max-width: 100%;
+    padding: 12px;
+    font-size: 11px;
+  }
+
+  .auth-form-panel {
+    padding: 80px 23px 38px;
+  }
+
+  .auth-page-actions {
+    right: 4%;
+    gap: 8px;
+  }
+
+  .pkb-topbar {
+    flex-wrap: wrap;
+  }
+
+  .pkb-page-heading,
+  .pkb-welcome {
+    gap: 16px;
+  }
+
+  .pkb-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pkb-note-grid,
+  .pkb-bookmark-grid,
+  .pkb-tag-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pkb-settings-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .auth-page {
+    display: block;
+    min-height: 100vh;
+  }
+
+  .auth-brand-panel {
+    display: none;
+  }
+
+  .auth-form-panel {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px 24px 35px;
+  }
+
+  .auth-form-container {
+    max-width: 460px;
+  }
+
+  .auth-mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+  }
+
+  .auth-heading {
+    margin-bottom: 27px;
+  }
+
+  .auth-heading h2 {
+    font-size: clamp(26px, 6vw, 32px);
+    letter-spacing: -0.8px;
+  }
+
+  .auth-form {
+    gap: 19px;
+  }
+
+  .auth-submit {
+    min-height: 48px;
+  }
+
+  .auth-page-actions {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    left: 20px;
+    justify-content: flex-end;
+  }
+
+  .auth-privacy {
+    text-align: center;
+  }
+
+  .legal-hero {
+    padding: 50px 6% 42px;
+  }
+
+  .legal-hero h1 {
+    font-size: clamp(34px, 8vw, 44px);
+    letter-spacing: -1.2px;
+  }
+
+  .legal-content {
+    padding: 35px 6% 50px;
+  }
+
+  .legal-section h2 {
+    font-size: 18px;
+  }
+
+  .legal-section p {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .legal-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px 6%;
+  }
+
+  .legal-footer nav {
+    justify-content: flex-start;
+    gap: 12px 20px;
+  }
+
+  .pkb-topbar {
+    gap: 9px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .pkb-topbar-left {
+    flex: 1 1 auto;
+  }
+
+  .pkb-topbar-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pkb-search {
+    width: min(44vw, 210px);
+  }
+
+  .pkb-page-content {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .pkb-welcome h1,
+  .pkb-page-heading h1 {
+    font-size: 27px;
+  }
+
+  .pkb-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .pkb-note-grid,
+  .pkb-bookmark-grid,
+  .pkb-tag-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pkb-modal-backdrop {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .pkb-modal {
+    max-height: calc(100dvh - 24px);
+    padding: 20px 16px;
+  }
+
+  .pkb-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .pkb-modal-actions > button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pkb-two-factor-recovery-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-header {
+    min-height: 66px;
+    gap: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .landing-brand {
+    gap: 7px;
+  }
+
+  .landing-brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .landing-brand-mark svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .landing-brand-name {
+    font-size: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .landing-header-actions {
+    gap: 7px;
+  }
+
+  .landing-login {
+    font-size: 10px;
+  }
+
+  .landing-header-cta {
+    min-height: 34px;
+    gap: 4px;
+    padding: 0 9px;
+    border-radius: 9px;
+    font-size: 10px;
+  }
+
+  .landing-header-cta svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .landing-hero {
+    gap: 25px;
+    padding: 43px 17px 48px;
+  }
+
+  .landing-hero h1 {
+    margin-top: 20px;
+    font-size: clamp(34px, 9vw, 43px);
+    letter-spacing: -1.7px;
+    line-height: 1.13;
+  }
+
+  .landing-hero-description {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .landing-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .landing-primary-button {
+    width: 100%;
+    min-height: 48px;
+    padding-right: 13px;
+    padding-left: 13px;
+    font-size: 11px;
+  }
+
+  .landing-secondary-button {
+    min-height: 38px;
+  }
+
+  .landing-hero-trust {
+    align-items: flex-start;
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .landing-hero-visual {
+    min-height: 395px;
+  }
+
+  .landing-preview {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .landing-preview-body {
+    padding: 18px 15px;
+  }
+
+  .landing-preview-greeting h3 {
+    font-size: 21px;
+  }
+
+  .landing-orbit-one {
+    width: 290px;
+    height: 290px;
+  }
+
+  .landing-orbit-two {
+    width: 240px;
+    height: 350px;
+  }
+
+  .landing-floating-card {
+    max-width: 175px;
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .landing-floating-top {
+    top: 3px;
+    right: -3px;
+  }
+
+  .landing-floating-bottom {
+    bottom: 3px;
+    left: -3px;
+  }
+
+  .landing-floating-card strong {
+    font-size: 9px;
+  }
+
+  .landing-floating-card span:not(.landing-floating-icon) {
+    font-size: 7px;
+  }
+
+  .landing-floating-icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .landing-floating-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .landing-principles {
+    gap: 21px;
+    padding: 25px 18px;
+  }
+
+  .section-container {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .landing-features {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .landing-section-heading {
+    margin-bottom: 30px;
+  }
+
+  .landing-section-heading h2,
+  .landing-workflow-heading h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .landing-feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .landing-feature-card {
+    min-height: 0;
+    padding: 21px;
+  }
+
+  .landing-workflow {
+    padding: 60px 19px;
+  }
+
+  .landing-workflow-inner {
+    gap: 35px;
+  }
+
+  .landing-workflow-step {
+    gap: 12px;
+    padding-bottom: 28px;
+  }
+
+  .landing-step-number {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+
+  .landing-step-connector {
+    left: 19px;
+  }
+
+  .landing-cta-section {
+    padding: 60px 18px;
+  }
+
+  .landing-cta-content h2 {
+    font-size: 39px;
+    letter-spacing: -1.2px;
+  }
+
+  .landing-footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .landing-footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 16px;
+  }
+
+  .landing-footer-about,
+  .landing-footer-note {
+    grid-column: 1 / -1;
+  }
+
+  .landing-footer-column h3 {
+    font-size: 11px;
+  }
+
+  .landing-footer-column a {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .landing-footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 17px 0;
+    line-height: 1.7;
+  }
+
+  .theme-switcher-compact .theme-switcher-button {
+    width: 28px;
+    height: 29px;
+  }
+
+  .auth-form-panel {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .auth-mobile-brand {
+    font-size: 20px;
+  }
+
+  .auth-heading h2 {
+    font-size: 27px;
+  }
+
+  .auth-page-actions {
+    right: 16px;
+    left: 16px;
+  }
+
+  .pkb-search {
+    width: min(40vw, 175px);
+  }
+
+  .pkb-search input {
+    font-size: 11px;
+  }
+
+  .pkb-breadcrumb {
+    font-size: 10px;
+  }
+
+  .pkb-stat-card {
+    padding: 13px;
+  }
+
+  .pkb-stat-card > strong {
+    font-size: 23px;
+  }
+
+  .pkb-page-heading .pkb-heading-actions,
+  .pkb-welcome .pkb-heading-actions {
+    width: 100%;
+  }
+
+  .pkb-page-heading .pkb-heading-actions > button,
+  .pkb-welcome .pkb-heading-actions > button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-brand-name {
+    font-size: 14px;
+  }
+
+  .landing-header {
+    gap: 5px;
+  }
+
+  .landing-header-actions {
+    gap: 5px;
+  }
+
+  .landing-header-cta {
+    padding: 0 7px;
+    font-size: 9px;
+  }
+
+  .theme-switcher-compact .theme-switcher-button {
+    width: 25px;
+    height: 27px;
+  }
+
+  .landing-hero h1 {
+    font-size: 32px;
+  }
+
+  .landing-preview-stats {
+    gap: 6px;
+  }
+
+  .landing-preview-stat {
+    gap: 7px;
+    padding: 9px 7px;
+  }
+
+  .landing-preview-stat-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pkb-stat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auth-form-panel {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .landing-page *,
+  .legal-page *,
+  .auth-page *,
+  .pkb-app *,
+  .theme-switcher * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
