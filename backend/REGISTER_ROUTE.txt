@@ -1,0 +1,12 @@
+Add the following route registration to backend/server.js alongside your other API route registrations.
+
+app.use("/api/note-insights", require("./routes/noteInsightsRoutes"));
+
+Place it before the 404 handler in server.js.
+
+This registers the endpoint:
+POST /api/note-insights
+
+The endpoint uses the existing authentication middleware, so the user must be logged in to generate AI insights.
+
+After adding the route, restart the backend server.

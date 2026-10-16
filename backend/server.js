@@ -15,6 +15,7 @@ const noteVersionsRoutes = require("./routes/noteVersionsRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const twoFactorRoutes = require("./routes/twoFactorRoutes");
 const aiChatRoutes = require("./routes/aiChatRoutes");
+const noteInsightsRoutes = require("./routes/noteInsightsRoutes");
 
 const app = express();
 
@@ -25,13 +26,6 @@ app.use(
 );
 
 app.use(express.json({ limit: "1mb" }));
-
-app.use("/api/folders", foldersRoutes);
-app.use("/api/tags", tagsRoutes);
-app.use("/api/documents", documentsRoutes);
-app.use("/api/activity", activityRoutes);
-app.use("/api/versions", noteVersionsRoutes);
-app.use("/api/profile", profileRoutes);
 
 app.get("/", (req, res) => {
   res.json({
@@ -63,8 +57,15 @@ app.get("/api/health", async (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", notesRoutes);
 app.use("/api/bookmarks", bookmarksRoutes);
+app.use("/api/folders", foldersRoutes);
+app.use("/api/tags", tagsRoutes);
+app.use("/api/documents", documentsRoutes);
+app.use("/api/activity", activityRoutes);
+app.use("/api/versions", noteVersionsRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/2fa", twoFactorRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
+app.use("/api/note-insights", noteInsightsRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
@@ -89,13 +90,13 @@ async function startServer() {
     }
 
     const connection = await pool.getConnection();
-
     await connection.ping();
     connection.release();
 
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
       console.log("MySQL database connected successfully");
+      console.log("AI Note Insights route registered at /api/note-insights");
     });
   } catch (error) {
     console.error("Unable to start the server:", error.message);

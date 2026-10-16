@@ -37,6 +37,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import "./noteInsights.css";
 import RichTextEditor from "./components/RichTextEditor";
 import RichTextContent from "./components/RichTextContent";
 import NoteAttachments from "./components/NoteAttachments";
@@ -295,6 +296,9 @@ const [theme, setTheme] = useState(() => {
 
   const [noteTitle, setNoteTitle] = useState("");
   const [noteContent, setNoteContent] = useState("");
+  const [noteInsights, setNoteInsights] = useState(null);
+  const [noteInsightsLoading, setNoteInsightsLoading] = useState(false);
+  const [noteInsightsError, setNoteInsightsError] = useState("");
   const [noteCategory, setNoteCategory] = useState("Personal");
   const [selectedFolderId, setSelectedFolderId] = useState("");
   const [selectedTagIds, setSelectedTagIds] = useState([]);
@@ -869,7 +873,51 @@ const [theme, setTheme] = useState(() => {
     setSidebarOpen(false);
   };
 
+  const generateNoteInsights = async () => {
+    const plainContent = String(noteContent || "")
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;|&#160;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;|&apos;/gi, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (plainContent.length < 20) {
+      setNoteInsights(null);
+      setNoteInsightsError("Please write at least 20 characters before generating insights.");
+      return;
+    }
+
+    setNoteInsightsLoading(true);
+    setNoteInsightsError("");
+
+    try {
+      const result = await request("post", "/note-insights", {
+        title: noteTitle.trim(),
+        content: plainContent
+      });
+
+      setNoteInsights({
+        summary: result.summary,
+        suggestions: Array.isArray(result.suggestions) ? result.suggestions : [],
+        suggestedTags: Array.isArray(result.suggestedTags) ? result.suggestedTags : []
+      });
+    } catch (error) {
+      setNoteInsightsError(error.message || "Unable to generate AI insights. Please try again.");
+    } finally {
+      setNoteInsightsLoading(false);
+    }
+  };
+
   const openNoteEditor = (note = null, folderId = "") => {
+    setNoteInsights(null);
+    setNoteInsightsError("");
+    setNoteInsightsLoading(false);
     setOperationError("");
     setEditingNoteId(note?.id ?? null);
     setNoteTitle(note?.title || "");
@@ -888,6 +936,9 @@ const [theme, setTheme] = useState(() => {
     if (noteSaving) return;
 
     setShowNoteEditor(false);
+    setNoteInsights(null);
+    setNoteInsightsError("");
+    setNoteInsightsLoading(false);
     setEditingNoteId(null);
     setNoteTitle("");
     setNoteContent("");
@@ -3091,8 +3142,78 @@ const [theme, setTheme] = useState(() => {
 
               <RichTextEditor
                 value={noteContent}
-                onChange={setNoteContent}
+                onChange={(value) => {
+                  setNoteContent(value);
+                  setNoteInsights(null);
+                  setNoteInsightsError("");
+                }}
               />
+
+              <div className="pkb-note-insights">
+                <div className="pkb-note-insights-header">
+                  <div className="pkb-note-insights-heading">
+                    <span className="pkb-note-insights-eyebrow">
+                      <Sparkles size={15} />
+                      AI-POWERED
+                    </span>
+                    <h3>AI Insights</h3>
+                    <p>Get a summary and personalized suggestions for your note.</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="pkb-note-insights-button"
+                    onClick={generateNoteInsights}
+                    disabled={noteInsightsLoading || String(noteContent || "").replace(/<[^>]*>/g, " ").trim().length < 20}
+                  >
+                    {noteInsightsLoading ? (
+                      <><LoaderCircle className="pkb-spinner" size={16} />Generating...</>
+                    ) : (
+                      <><Sparkles size={16} />{noteInsights ? "Regenerate" : "Generate insights"}</>
+                    )}
+                  </button>
+                </div>
+
+                {noteInsightsError && <div className="pkb-note-insights-error" role="alert">{noteInsightsError}</div>}
+
+                {noteInsightsLoading && (
+                  <div className="pkb-note-insights-loading">
+                    <LoaderCircle className="pkb-spinner" size={20} />
+                    <div><strong>Analyzing your note...</strong><p>Preparing your summary, suggestions, and relevant tags.</p></div>
+                  </div>
+                )}
+
+                {!noteInsights && !noteInsightsLoading && !noteInsightsError && (
+                  <div className="pkb-note-insights-empty">
+                    <Sparkles size={20} />
+                    <div><strong>Your personal AI assistant</strong><p>Write your note and select Generate insights to get started.</p></div>
+                  </div>
+                )}
+
+                {noteInsights && !noteInsightsLoading && (
+                  <div className="pkb-note-insights-results">
+                    <section className="pkb-note-insights-section">
+                      <div className="pkb-note-insights-section-heading"><FileText size={17} /><h4>AI Summary</h4></div>
+                      <p className="pkb-note-insights-summary">{noteInsights.summary}</p>
+                    </section>
+                    <section className="pkb-note-insights-section">
+                      <div className="pkb-note-insights-section-heading"><Sparkles size={17} /><h4>Suggestions for you</h4></div>
+                      {noteInsights.suggestions.length ? (
+                        <ul className="pkb-note-insights-suggestions">
+                          {noteInsights.suggestions.map((suggestion, index) => <li key={`${index}-${suggestion}`}><span className="pkb-note-insights-bullet"><Check size={13} /></span><span>{suggestion}</span></li>)}
+                        </ul>
+                      ) : <p>No suggestions are available for this note.</p>}
+                    </section>
+                    <section className="pkb-note-insights-section">
+                      <div className="pkb-note-insights-section-heading"><Tag size={17} /><h4>Suggested tags</h4></div>
+                      {noteInsights.suggestedTags.length ? (
+                        <div className="pkb-note-insights-tags">
+                          {noteInsights.suggestedTags.map((tag, index) => <span key={`${index}-${tag}`} className="pkb-note-insights-tag"><Tag size={12} />{tag}</span>)}
+                        </div>
+                      ) : <p>No relevant tags were suggested.</p>}
+                    </section>
+                  </div>
+                )}
+              </div>
 
               {editingNoteId !== null && (
                 <div className="pkb-note-history-actions">
