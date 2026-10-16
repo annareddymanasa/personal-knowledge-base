@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const authenticateToken = require("../middleware/authMiddleware");
+const { summarizeDocument } = require("../controllers/documentSummarizationController");
 
 const {
   upload,
@@ -49,6 +50,7 @@ router.post(
   uploadDocuments
 );
 
+router.post("/:id/summarize", summarizeDocument);
 router.get("/:id/download", downloadDocument);
 router.delete("/:id", deleteDocument);
 
